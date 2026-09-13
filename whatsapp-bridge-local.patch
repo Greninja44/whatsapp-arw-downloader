@@ -1,0 +1,364 @@
+diff --git a/whatsapp-bridge/go.mod b/whatsapp-bridge/go.mod
+index d100985..fbbfbea 100644
+--- a/whatsapp-bridge/go.mod
++++ b/whatsapp-bridge/go.mod
+@@ -1,25 +1,33 @@
+ module whatsapp-client
+ 
+-go 1.24.1
++go 1.26.0
+ 
+ require (
+-	github.com/mattn/go-sqlite3 v1.14.24
+-	go.mau.fi/whatsmeow v0.0.0-20250318233852-06705625cf82
++	github.com/mattn/go-sqlite3 v1.14.49
++	github.com/mdp/qrterminal v1.0.1
++	go.mau.fi/whatsmeow v0.0.0-20260909164725-b25a56d63729
++	google.golang.org/protobuf v1.36.12
+ )
+ 
+ require (
+-	filippo.io/edwards25519 v1.1.0 // indirect
++	filippo.io/edwards25519 v1.2.0 // indirect
++	github.com/beeper/argo-go v1.1.2 // indirect
++	github.com/coder/websocket v1.8.15 // indirect
++	github.com/elliotchance/orderedmap/v3 v3.1.0 // indirect
+ 	github.com/google/uuid v1.6.0 // indirect
+ 	github.com/gorilla/websocket v1.5.0 // indirect
+-	github.com/mattn/go-colorable v0.1.13 // indirect
+-	github.com/mattn/go-isatty v0.0.19 // indirect
+-	github.com/mdp/qrterminal v1.0.1 // indirect
+-	github.com/rs/zerolog v1.33.0 // indirect
+-	go.mau.fi/libsignal v0.1.2 // indirect
+-	go.mau.fi/util v0.8.6 // indirect
+-	golang.org/x/crypto v0.36.0 // indirect
+-	golang.org/x/net v0.37.0 // indirect
+-	golang.org/x/sys v0.31.0 // indirect
+-	google.golang.org/protobuf v1.36.5 // indirect
++	github.com/mattn/go-colorable v0.1.14 // indirect
++	github.com/mattn/go-isatty v0.0.20 // indirect
++	github.com/petermattis/goid v0.0.0-20260816044145-ed329add6b1b // indirect
++	github.com/rs/zerolog v1.35.1 // indirect
++	github.com/vektah/gqlparser/v2 v2.5.27 // indirect
++	go.mau.fi/libsignal v0.2.2 // indirect
++	go.mau.fi/util v0.10.1-0.20260820140024-eb612d936fde // indirect
++	golang.org/x/crypto v0.55.0 // indirect
++	golang.org/x/exp v0.0.0-20260813180055-c1d0aacb2297 // indirect
++	golang.org/x/net v0.58.0 // indirect
++	golang.org/x/sync v0.22.0 // indirect
++	golang.org/x/sys v0.47.0 // indirect
++	golang.org/x/text v0.41.0 // indirect
+ 	rsc.io/qr v0.2.0 // indirect
+ )
+diff --git a/whatsapp-bridge/go.sum b/whatsapp-bridge/go.sum
+index d92eb5f..22bc2de 100644
+--- a/whatsapp-bridge/go.sum
++++ b/whatsapp-bridge/go.sum
+@@ -1,51 +1,93 @@
+ filippo.io/edwards25519 v1.1.0 h1:FNf4tywRC1HmFuKW5xopWpigGjJKiJSV0Cqo0cJWDaA=
+ filippo.io/edwards25519 v1.1.0/go.mod h1:BxyFTGdWcka3PhytdK4V28tE5sGfRvvvRV7EaN4VDT4=
++filippo.io/edwards25519 v1.2.0 h1:crnVqOiS4jqYleHd9vaKZ+HKtHfllngJIiOpNpoJsjo=
++filippo.io/edwards25519 v1.2.0/go.mod h1:xzAOLCNug/yB62zG1bQ8uziwrIqIuxhctzJT18Q77mc=
++github.com/beeper/argo-go v1.1.2 h1:UQI2G8F+NLfGTOmTUI0254pGKx/HUU/etbUGTJv91Fs=
++github.com/beeper/argo-go v1.1.2/go.mod h1:M+LJAnyowKVQ6Rdj6XYGEn+qcVFkb3R/MUpqkGR0hM4=
++github.com/coder/websocket v1.8.15 h1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=
++github.com/coder/websocket v1.8.15/go.mod h1:NX3SzP+inril6yawo5CQXx8+fk145lPDC6pumgx0mVg=
+ github.com/coreos/go-systemd/v22 v22.5.0/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
+ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
+ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
++github.com/elliotchance/orderedmap/v3 v3.1.0 h1:j4DJ5ObEmMBt/lcwIecKcoRxIQUEnw0L804lXYDt/pg=
++github.com/elliotchance/orderedmap/v3 v3.1.0/go.mod h1:G+Hc2RwaZvJMcS4JpGCOyViCnGeKf0bTYCGTO4uhjSo=
+ github.com/godbus/dbus/v5 v5.0.4/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
+ github.com/google/go-cmp v0.5.5 h1:Khx7svrCpmxxtHBq5j2mp/xVjsi8hQMfNLvJFAlrGgU=
+ github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
++github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=
+ github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
+ github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+ github.com/gorilla/websocket v1.5.0 h1:PPwGk2jz7EePpoHN/+ClbZu8SPxiqlu12wZP/3sWmnc=
+ github.com/gorilla/websocket v1.5.0/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
+ github.com/mattn/go-colorable v0.1.13 h1:fFA4WZxdEF4tXPZVKMLwD8oUnCTTo08duU7wxecdEvA=
+ github.com/mattn/go-colorable v0.1.13/go.mod h1:7S9/ev0klgBDR4GtXTXX8a3vIGJpMovkB8vQcUbaXHg=
++github.com/mattn/go-colorable v0.1.14 h1:9A9LHSqF/7dyVVX6g0U9cwm9pG3kP9gSzcuIPHPsaIE=
++github.com/mattn/go-colorable v0.1.14/go.mod h1:6LmQG8QLFO4G5z1gPvYEzlUgJ2wF+stgPZH1UqBm1s8=
+ github.com/mattn/go-isatty v0.0.16/go.mod h1:kYGgaQfpe5nmfYZH+SKPsOc2e4SrIfOl2e/yFXSvRLM=
+ github.com/mattn/go-isatty v0.0.19 h1:JITubQf0MOLdlGRuRq+jtsDlekdYPia9ZFsB8h/APPA=
+ github.com/mattn/go-isatty v0.0.19/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
++github.com/mattn/go-isatty v0.0.20 h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY=
++github.com/mattn/go-isatty v0.0.20/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
+ github.com/mattn/go-sqlite3 v1.14.24 h1:tpSp2G2KyMnnQu99ngJ47EIkWVmliIizyZBfPrBWDRM=
+ github.com/mattn/go-sqlite3 v1.14.24/go.mod h1:Uh1q+B4BYcTPb+yiD3kU8Ct7aC0hY9fxUwlHK0RXw+Y=
++github.com/mattn/go-sqlite3 v1.14.49 h1:B8jBHC3xhxZgxztrgruTuLucebnULQnx4W7cF7SAE9w=
++github.com/mattn/go-sqlite3 v1.14.49/go.mod h1:6JTjA44L93a0QCyJef5YvlPoKXntQPjzWv5gtm9sB6w=
+ github.com/mdp/qrterminal v1.0.1 h1:07+fzVDlPuBlXS8tB0ktTAyf+Lp1j2+2zK3fBOL5b7c=
+ github.com/mdp/qrterminal v1.0.1/go.mod h1:Z33WhxQe9B6CdW37HaVqcRKzP+kByF3q/qLxOGe12xQ=
++github.com/petermattis/goid v0.0.0-20260816044145-ed329add6b1b h1:sS7HLzwS+dO+gxATgQfeZDEdUZe2pKAB3nGoUwP5zU0=
++github.com/petermattis/goid v0.0.0-20260816044145-ed329add6b1b/go.mod h1:pxMtw7cyUw6B2bRH0ZBANSPg+AoSud1I1iyJHI69jH4=
+ github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
+ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
+ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+ github.com/rs/xid v1.5.0/go.mod h1:trrq9SKmegXys3aeAKXMUTdJsYXVwGY3RLcfgqegfbg=
+ github.com/rs/zerolog v1.33.0 h1:1cU2KZkvPxNyfgEmhHAz/1A9Bz+llsdYzklWFzgp0r8=
+ github.com/rs/zerolog v1.33.0/go.mod h1:/7mN4D5sKwJLZQ2b/znpjC3/GQWY/xaDXUM0kKWRHss=
++github.com/rs/zerolog v1.35.1 h1:m7xQeoiLIiV0BCEY4Hs+j2NG4Gp2o2KPKmhnnLiazKI=
++github.com/rs/zerolog v1.35.1/go.mod h1:EjML9kdfa/RMA7h/6z6pYmq1ykOuA8/mjWaEvGI+jcw=
+ github.com/stretchr/testify v1.10.0 h1:Xv5erBjTwe/5IxqUQTdXv5kgmIvbHo3QQyRwhJsOfJA=
+ github.com/stretchr/testify v1.10.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
++github.com/stretchr/testify v1.11.1 h1:7s2iGBzp5EwR7/aIZr8ao5+dra3wiQyKjjFuvgVKu7U=
++github.com/vektah/gqlparser/v2 v2.5.27 h1:RHPD3JOplpk5mP5JGX8RKZkt2/Vwj/PZv0HxTdwFp0s=
++github.com/vektah/gqlparser/v2 v2.5.27/go.mod h1:D1/VCZtV3LPnQrcPBeR/q5jkSQIPti0uYCP/RI0gIeo=
+ go.mau.fi/libsignal v0.1.2 h1:Vs16DXWxSKyzVtI+EEXLCSy5pVWzzCzp/2eqFGvLyP0=
+ go.mau.fi/libsignal v0.1.2/go.mod h1:JpnLSSJptn/s1sv7I56uEMywvz8x4YzxeF5OzdPb6PE=
++go.mau.fi/libsignal v0.2.2 h1:QV+XdzQkm3x3aSG7FcqfGSZuFXz83pRZPBFaPygHbOU=
++go.mau.fi/libsignal v0.2.2/go.mod h1:CRlIQg2J8uYTfDFvNoO8/KcZjs5cey0vbc6oj/bssY0=
+ go.mau.fi/util v0.8.6 h1:AEK13rfgtiZJL2YsNK+W4ihhYCuukcRom8WPP/w/L54=
+ go.mau.fi/util v0.8.6/go.mod h1:uNB3UTXFbkpp7xL1M/WvQks90B/L4gvbLpbS0603KOE=
++go.mau.fi/util v0.10.1-0.20260820140024-eb612d936fde h1:eMHY9dMDkNuDMWhfTbMZHbbsxj7G6mfujjKei1HaFQM=
++go.mau.fi/util v0.10.1-0.20260820140024-eb612d936fde/go.mod h1:z0ZZNt4hq3FZbUKnunexE/QscCx7VkLvQSvtggc/aE8=
+ go.mau.fi/whatsmeow v0.0.0-20250318233852-06705625cf82 h1:AZlDkXHgoQNW4gd2hnTCvPH7hYznmwc3gPaYqGZ5w8A=
+ go.mau.fi/whatsmeow v0.0.0-20250318233852-06705625cf82/go.mod h1:WNhj4JeQ6YR6dUOEiCXKqmE4LavSFkwRoKmu4atRrRs=
++go.mau.fi/whatsmeow v0.0.0-20260909164725-b25a56d63729 h1:KWk0ztebP3p4nNDartuTk8NHaIIM9mLOSfYm4mcnLwo=
++go.mau.fi/whatsmeow v0.0.0-20260909164725-b25a56d63729/go.mod h1:aMd13H2xFFGH9cskcvxo4Aae+TmyFN38yw+HvsrpwVg=
+ golang.org/x/crypto v0.36.0 h1:AnAEvhDddvBdpY+uR+MyHmuZzzNqXSe/GvuDeob5L34=
+ golang.org/x/crypto v0.36.0/go.mod h1:Y4J0ReaxCR1IMaabaSMugxJES1EpwhBHhv2bDHklZvc=
++golang.org/x/crypto v0.55.0 h1:+KWHjbgOaAQ66dh/YlkZKHlz9ZUlq61AFirAR9ntP8M=
++golang.org/x/crypto v0.55.0/go.mod h1:uq0V9dE/fzQuJtbnL+2EhWOE63vo164FY8xqEnV9xis=
++golang.org/x/exp v0.0.0-20260813180055-c1d0aacb2297 h1:YXnL44eJ77R+ji4/ooy8UsXIhz+lbi2Qgdlc8iRN0gY=
++golang.org/x/exp v0.0.0-20260813180055-c1d0aacb2297/go.mod h1:Mkmymgv+uMpSQ/XxJ/7GpdrdYoqm3u72jEbpCLiJmNk=
+ golang.org/x/net v0.37.0 h1:1zLorHbz+LYj7MQlSf1+2tPIIgibq2eL5xkrGk6f+2c=
+ golang.org/x/net v0.37.0/go.mod h1:ivrbrMbzFq5J41QOQh0siUuly180yBYtLp+CKbEaFx8=
++golang.org/x/net v0.58.0 h1:ynWG7rqYi4ccpTEuPZ2QGWHktVEM9DMCj9yzDE0Q7To=
++golang.org/x/net v0.58.0/go.mod h1:YwCddHnFlT7eLQqVprV19OnhLGtc5xOKgE0RyqgfWAU=
++golang.org/x/sync v0.22.0 h1:SZjpbeLmrCk4xhRSZFNZW5gFUeCeFgjekvI/+gfScek=
++golang.org/x/sync v0.22.0/go.mod h1:9xrNwdLfx4jkKbNva9FpL6vEN7evnE43NNNJQ2LF3+0=
+ golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.12.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.31.0 h1:ioabZlmFYtWhL+TRYpcnNlLwhyxaM9kWTDEmfnprqik=
+ golang.org/x/sys v0.31.0/go.mod h1:BJP2sWEmIv4KK5OTEluFJCKSidICx8ciO85XgH3Ak8k=
++golang.org/x/sys v0.47.0 h1:o7XGOvZQCADBQQ4Y7VNq2dRWQR7JmOUW8Kxx4ZsNgWs=
++golang.org/x/sys v0.47.0/go.mod h1:4GL1E5IUh+htKOUEOaiffhrAeqysfVGipDYzABqnCmw=
++golang.org/x/text v0.41.0 h1:vz/seA0lnX87Othu2f/0L24RcgrXD9/YFTSuGjj3rH8=
++golang.org/x/text v0.41.0/go.mod h1:jvf1O8ajNzZqhSrQBPbutR/EB83Cc0CFrezNQIwbb5M=
+ golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543 h1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=
+ golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
+ google.golang.org/protobuf v1.36.5 h1:tPhr+woSbjfYvY6/GPufUoYizxw1cF/yFoxJ2fmpwlM=
+ google.golang.org/protobuf v1.36.5/go.mod h1:9fA7Ob0pmnwhb644+1+CVWFRbNajQ6iRojtC/QF5bRE=
++google.golang.org/protobuf v1.36.12 h1:pJOKDDOyeXErUroCihFAd5LQuwXBSpVnKGrj5o/fwxc=
++google.golang.org/protobuf v1.36.12/go.mod h1:HTf+CrKn2C3g5S8VImy6tdcUvCska2kB7j23XfzDpco=
+ gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
+ gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
+ rsc.io/qr v0.2.0 h1:6vBLea5/NRMVTz8V66gipeLycZMl/+UlFmk8DvqQ6WY=
+diff --git a/whatsapp-bridge/main.go b/whatsapp-bridge/main.go
+index d1e0270..f9aac66 100644
+--- a/whatsapp-bridge/main.go
++++ b/whatsapp-bridge/main.go
+@@ -1,6 +1,8 @@
+ package main
+ 
+ import (
++ "regexp"
++ "crypto/sha256"
+ 	"context"
+ 	"database/sql"
+ 	"encoding/binary"
+@@ -23,6 +25,7 @@ import (
+ 	"bytes"
+ 
+ 	"go.mau.fi/whatsmeow"
++	"go.mau.fi/whatsmeow/store"
+ 	waProto "go.mau.fi/whatsmeow/binary/proto"
+ 	"go.mau.fi/whatsmeow/store/sqlstore"
+ 	"go.mau.fi/whatsmeow/types"
+@@ -585,8 +588,13 @@ func downloadMedia(client *whatsmeow.Client, messageStore *MessageStore, message
+ 		return false, "", "", "", fmt.Errorf("not a media message")
+ 	}
+ 
+-	// Create directory for the chat if it doesn't exist
+-	if err := os.MkdirAll(chatDir, 0755); err != nil {
++	// Restrict this bridge to the requested Sony filenames.
++    if matched, _ := regexp.MatchString(`(?i)^DSC[0-9]{5}\.ARW$`, filename); !matched {
++        return false, "", "", "", fmt.Errorf("only DSC plus five digits .ARW documents are allowed")
++    }
++    messageHash := sha256.Sum256([]byte(messageID))
++    chatDir = filepath.Join(chatDir, fmt.Sprintf("%x", messageHash))
++    if err := os.MkdirAll(chatDir, 0755); err != nil {
+ 		return false, "", "", "", fmt.Errorf("failed to create chat directory: %v", err)
+ 	}
+ 
+@@ -641,7 +649,7 @@ func downloadMedia(client *whatsmeow.Client, messageStore *MessageStore, message
+ 	}
+ 
+ 	// Download the media using whatsmeow client
+-	mediaData, err := client.Download(downloader)
++	mediaData, err := client.Download(context.Background(), downloader)
+ 	if err != nil {
+ 		return false, "", "", "", fmt.Errorf("failed to download media: %v", err)
+ 	}
+@@ -668,8 +676,7 @@ func extractDirectPathFromURL(url string) string {
+ 
+ 	pathPart := parts[1]
+ 
+-	// Remove query parameters
+-	pathPart = strings.SplitN(pathPart, "?", 2)[0]
++	// Preserve WhatsApp's signed query parameters; removing them causes HTTP 403.
+ 
+ 	// Create proper direct path format
+ 	return "/" + pathPart
+@@ -678,50 +685,6 @@ func extractDirectPathFromURL(url string) string {
+ // Start a REST API server to expose the WhatsApp client functionality
+ func startRESTServer(client *whatsmeow.Client, messageStore *MessageStore, port int) {
+ 	// Handler for sending messages
+-	http.HandleFunc("/api/send", func(w http.ResponseWriter, r *http.Request) {
+-		// Only allow POST requests
+-		if r.Method != http.MethodPost {
+-			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+-			return
+-		}
+-
+-		// Parse the request body
+-		var req SendMessageRequest
+-		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+-			http.Error(w, "Invalid request format", http.StatusBadRequest)
+-			return
+-		}
+-
+-		// Validate request
+-		if req.Recipient == "" {
+-			http.Error(w, "Recipient is required", http.StatusBadRequest)
+-			return
+-		}
+-
+-		if req.Message == "" && req.MediaPath == "" {
+-			http.Error(w, "Message or media path is required", http.StatusBadRequest)
+-			return
+-		}
+-
+-		fmt.Println("Received request to send message", req.Message, req.MediaPath)
+-
+-		// Send the message
+-		success, message := sendWhatsAppMessage(client, req.Recipient, req.Message, req.MediaPath)
+-		fmt.Println("Message sent", success, message)
+-		// Set response headers
+-		w.Header().Set("Content-Type", "application/json")
+-
+-		// Set appropriate status code
+-		if !success {
+-			w.WriteHeader(http.StatusInternalServerError)
+-		}
+-
+-		// Send response
+-		json.NewEncoder(w).Encode(SendMessageResponse{
+-			Success: success,
+-			Message: message,
+-		})
+-	})
+ 
+ 	// Handler for downloading media
+ 	http.HandleFunc("/api/download", func(w http.ResponseWriter, r *http.Request) {
+@@ -775,7 +738,7 @@ func startRESTServer(client *whatsmeow.Client, messageStore *MessageStore, port
+ 	})
+ 
+ 	// Start the server
+-	serverAddr := fmt.Sprintf(":%d", port)
++	serverAddr := fmt.Sprintf("127.0.0.1:%d", port)
+ 	fmt.Printf("Starting REST API server on %s...\n", serverAddr)
+ 
+ 	// Run server in a goroutine so it doesn't block
+@@ -800,14 +763,14 @@ func main() {
+ 		return
+ 	}
+ 
+-	container, err := sqlstore.New("sqlite3", "file:store/whatsapp.db?_foreign_keys=on", dbLog)
++	container, err := sqlstore.New(context.Background(), "sqlite3", "file:store/whatsapp.db?_foreign_keys=on", dbLog)
+ 	if err != nil {
+ 		logger.Errorf("Failed to connect to database: %v", err)
+ 		return
+ 	}
+ 
+ 	// Get device store - This contains session information
+-	deviceStore, err := container.GetFirstDevice()
++	deviceStore, err := container.GetFirstDevice(context.Background())
+ 	if err != nil {
+ 		if err == sql.ErrNoRows {
+ 			// No device exists, create one
+@@ -820,6 +783,12 @@ func main() {
+ 	}
+ 
+ 	// Create client instance
++	if version, versionErr := whatsmeow.GetLatestVersion(context.Background(), &http.Client{Timeout: 30 * time.Second}); versionErr == nil {
++		store.SetWAVersion(*version)
++		logger.Infof("Using current WhatsApp Web version %s", version.String())
++	} else {
++		logger.Warnf("Could not fetch current WhatsApp Web version: %v", versionErr)
++	}
+ 	client := whatsmeow.NewClient(deviceStore, logger)
+ 	if client == nil {
+ 		logger.Errorf("Failed to create WhatsApp client")
+@@ -871,6 +840,7 @@ func main() {
+ 			if evt.Event == "code" {
+ 				fmt.Println("\nScan this QR code with your WhatsApp app:")
+ 				qrterminal.GenerateHalfBlock(evt.Code, qrterminal.L, os.Stdout)
++				os.WriteFile("store/pairing-qr.txt", []byte(evt.Code), 0600)
+ 			} else if evt.Event == "success" {
+ 				connected <- true
+ 				break
+@@ -880,6 +850,7 @@ func main() {
+ 		// Wait for connection
+ 		select {
+ 		case <-connected:
++			os.Remove("store/pairing-qr.txt")
+ 			fmt.Println("\nSuccessfully connected and authenticated!")
+ 		case <-time.After(3 * time.Minute):
+ 			logger.Errorf("Timeout waiting for QR code scan")
+@@ -906,7 +877,7 @@ func main() {
+ 	fmt.Println("\n✓ Connected to WhatsApp! Type 'help' for commands.")
+ 
+ 	// Start REST API server
+-	startRESTServer(client, messageStore, 8080)
++	startRESTServer(client, messageStore, 18080)
+ 
+ 	// Create a channel to keep the main goroutine alive
+ 	exitChan := make(chan os.Signal, 1)
+@@ -973,7 +944,7 @@ func GetChatName(client *whatsmeow.Client, messageStore *MessageStore, jid types
+ 
+ 		// If we didn't get a name, try group info
+ 		if name == "" {
+-			groupInfo, err := client.GetGroupInfo(jid)
++			groupInfo, err := client.GetGroupInfo(context.Background(), jid)
+ 			if err == nil && groupInfo.Name != "" {
+ 				name = groupInfo.Name
+ 			} else {
+@@ -988,7 +959,7 @@ func GetChatName(client *whatsmeow.Client, messageStore *MessageStore, jid types
+ 		logger.Infof("Getting name for contact: %s", chatJID)
+ 
+ 		// Just use contact info (full name)
+-		contact, err := client.Store.Contacts.GetContact(jid)
++		contact, err := client.Store.Contacts.GetContact(context.Background(), jid)
+ 		if err == nil && contact.FullName != "" {
+ 			name = contact.FullName
+ 		} else if sender != "" {
+diff --git a/whatsapp-mcp-server/whatsapp.py b/whatsapp-mcp-server/whatsapp.py
+index 55ff50a..202efc3 100644
+--- a/whatsapp-mcp-server/whatsapp.py
++++ b/whatsapp-mcp-server/whatsapp.py
+@@ -6,6 +6,11 @@ import os.path
+ import requests
+ import json
+ import audio
++import sys
++from functools import partial
++
++# MCP STDIO reserves stdout for protocol messages.
++print = partial(print, file=sys.stderr)
+ 
+ MESSAGES_DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'whatsapp-bridge', 'store', 'messages.db')
+ WHATSAPP_API_BASE_URL = "http://localhost:8080/api"
+@@ -345,6 +350,8 @@ def list_chats(
+                 LEFT JOIN messages ON chats.jid = messages.chat_jid 
+                 AND chats.last_message_time = messages.timestamp
+             """)
++        else:
++            query_parts[0] = query_parts[0].replace("messages.content", "NULL").replace("messages.sender", "NULL").replace("messages.is_from_me", "NULL")
+             
+         where_clauses = []
+         params = []

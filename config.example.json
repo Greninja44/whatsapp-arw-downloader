@@ -1,0 +1,16 @@
+{
+  "chat_name": "",
+  "download_dir": "downloads/arw",
+  "jpeg_dir": "output/jpeg",
+  "browser_profile": "browser_profile",
+  "jpeg_quality": 95,
+  "max_files": 100,
+  "max_scrolls": 1000,
+  "idle_scrolls": 12,
+  "scroll_pause_ms": 1500,
+  "login_timeout_seconds": 300,
+  "download_timeout_seconds": 180,
+  "browser_channel": "chrome",
+  "browser_executable": "",
+  "selectors": {}
+}
